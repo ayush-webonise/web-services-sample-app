@@ -10,7 +10,7 @@ class CommonConstants {
     struct StoryboardID {
         static let SHOW_WEATHER_STORYBOARD_ID = "ShowWeatherVC"
     }
-    struct AlertField {
+    struct AlertViewConstants {
         static let ALERT_TITLE = "Alert"
         static let ALERT_MESSAGE = "Enter proper City name"
         static let ACTION_TITLE = "OK"

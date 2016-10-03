@@ -20,7 +20,6 @@ class ShowWeatherVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -29,10 +28,8 @@ class ShowWeatherVC: UIViewController {
         self.webServicesRequest()
     }
     
-    /** This function calls api and converts the data of json format into NSDictionary. The function accepts a url and calls api to fetch the information of JSON type into responseString. Then JSON document is converted into NSDictionary type.
-     * \param None
-     * \returns Nothing
-     */
+    /// This function calls api and converts the data of json format into NSDictionary. The function accepts a url and calls api to fetch the information of JSON type into responseString. Then JSON document is converted into NSDictionary type.
+    ///- returns: Void
     func webServicesRequest() -> Void {
         let scriptUrl = CommonConstants.WebServices.URL
         let urlWithParams = scriptUrl + enteredCityName! +  CommonConstants.WebServices.AND + CommonConstants.WebServices.APPID +  (CommonConstants.WebServices.APPID_VALUE)
@@ -63,10 +60,9 @@ class ShowWeatherVC: UIViewController {
         task.resume()
     }
    
-    /** This function stores value of specific key in separate variables. The local variables are then converted to string to store them into model's object. The function also calls the displayWeatherDetails() function
-     * \param dict of NSDictionary type
-     * \returns Nothing
-     */
+    /// This function stores value of specific key in separate variables. The local variables are then converted to string to store them into model's object. The function also calls the displayWeatherDetails() function
+    ///- parameter: dict of NSDictionary type
+    ///- returns: Void
     func parseDictionary(dict: NSDictionary) -> Void {
         if let latitude = dict[CommonConstants.DictionaryKey.COORDINATES]?[CommonConstants.DictionaryKey.LATITUDE] as? Float {
             weather.latitude = String(latitude)
@@ -83,19 +79,16 @@ class ShowWeatherVC: UIViewController {
             self.displayWeatherDetails()
     }
     
-    /** This function converts the temperature from fahrenheit to degree celsius
-     * \param temperature of Float type. this parameter is received in Fahrenheit
-     * \returns convertedTemperature. convertedTemperature is in degree celsius
-     */
+    /// This function converts the temperature from fahrenheit to degree celsius
+    ///- parameter: temperature of Float type. This parameter is received in Fahrenheit
+    ///- returns: convertedTemperature. convertedTemperature is in degree celsius
     func convertToCelsius(temperature: Float) -> Float {
         let convertedTemperature = ((temperature - 32)/1.8)
         return convertedTemperature
     }
     
-    /** This function populates the textfields and displays information each text field is populated to display the required information
-     * \param None
-     * \returns Nothing
-     */
+    /// This function populates the textfields and displays information each text field is populated to display the required information
+    ///- returns: Void
     func displayWeatherDetails() -> Void {
         dispatch_async(dispatch_get_main_queue()){
             self.textFieldLatitude.text = self.weather.latitude
