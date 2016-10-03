@@ -17,8 +17,10 @@ class GetWeatherVC: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    /// This function checks for validations whether the user has added only whitespaces in the text field
-    ///  - returns: false if the user has entered only whitespaces and no string else returns true
+    /** 
+    This function checks for validations whether the user has added only whitespaces in the text field
+    - returns:false if the user has entered only whitespaces and no string else returns true
+    */
     func isValidCityName(enteredCityName: NSString) -> Bool {
         if(enteredCityName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).characters.count == 0)
         {
@@ -30,9 +32,12 @@ class GetWeatherVC: UIViewController {
         }
     }
     
-    /// This function checks for validations whether the user has added only whitespaces in the text field
-    ///- returns: Void
-    func checkValidation() -> Void {
+    /**
+     This method checks whether the city name entered by the user is valid or invalid. If the city name is valid it takes user to see the weather details of the respective city else an alert is prompted on the screen to enter valid city name
+     - returns: Void
+     */
+    
+        func checkValidation() -> Void {
         //here if condition checks for the valid city name entered by the user and if invalid city name is entered an alert is prompted on the screen
         if(!(self.isValidCityName(textFieldEnterCityName.text!)))
         {
@@ -52,15 +57,18 @@ class GetWeatherVC: UIViewController {
         }
     }
     
-    /// Function clears text field upon calling. 
-    /// Empties the text field upon calling
-    ///- returns: Void
-    func clearTextFields() -> Void {
+    /**
+     This method clears the enter city text field upon calling
+     - returns: Void
+     */
+        func clearTextFields() -> Void {
         textFieldEnterCityName.text = ""
     }
     
-    /// It performs action when getWeatherButtonTapped button is pressed. Calls checkValidation method
-    ///- parameter: sender ID of getWeatherButtonTapped button
+    /**
+     It performs action when getWeatherButtonTapped button is pressed. Calls checkValidation method
+     - parameter sender ID: ID of getWeatherButtonTapped button
+     */
    @IBAction func getWeatherButtonTapped(sender: AnyObject) {
         self.checkValidation()
     }
