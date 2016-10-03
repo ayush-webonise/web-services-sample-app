@@ -16,13 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        navigationController = UINavigationController()
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("GetWeatherVC")
-        self.navigationController?.pushViewController(initialViewController, animated: false)
-        self.window!.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
+//        navigationController = UINavigationController()
+//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("GetWeatherVC")
+//        self.navigationController?.pushViewController(initialViewController, animated: false)
+//        self.window!.rootViewController = navigationController
+//        self.window?.makeKeyAndVisible()
         
         return true
     }

@@ -19,10 +19,10 @@ class GetWeatherVC: UIViewController {
     }
 
     /** This function checks for validations whether the user has added only whitespaces in the text field
-     * \returns Nothing
+     * \returns false if the user has entered only whitespaces and no string else returns true
      */
-    func isValid(isValidString: NSString) -> Bool {
-        if(isValidString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).characters.count == 0)
+    func isValidCityName(enteredCityName: NSString) -> Bool {
+        if(enteredCityName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).characters.count == 0)
         {
             return false
         }
@@ -36,7 +36,8 @@ class GetWeatherVC: UIViewController {
      * \returns Nothing
      */
     func checkValidation() -> Void {
-        if(!(self.isValid(textFieldEnterCityName.text!)))
+        //here if condition checks for the valid city name entered by the user and if invalid city name is entered an alert is prompted on the screen
+        if(!(self.isValidCityName(textFieldEnterCityName.text!)))
         {
             textFieldEnterCityName.becomeFirstResponder()
             let alert = UIAlertController(title: CommonConstants.AlertField.ALERT_TITLE, message: CommonConstants.AlertField.ALERT_MESSAGE, preferredStyle: UIAlertControllerStyle.Alert)
@@ -45,6 +46,7 @@ class GetWeatherVC: UIViewController {
         }
         else
         {
+            //if the entered city name is valid the user can press get weather and navigate to other screen to view the weather details
             if let showWeatherVC = storyboard!.instantiateViewControllerWithIdentifier(CommonConstants.StoryboardID.SHOW_WEATHER_STORYBOARD_ID) as? ShowWeatherVC {
                 showWeatherVC.enteredCityName = textFieldEnterCityName.text!
                 self.navigationController!.pushViewController(showWeatherVC, animated: true)
@@ -67,7 +69,6 @@ class GetWeatherVC: UIViewController {
         self.checkValidation()
     }
     
-        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
